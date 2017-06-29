@@ -1,1 +1,0 @@
-docker run --rm -p 4000:4000 -v C:\Users\Wade\Projects\wadehuang36.github.io:/site jekyll/jekyll jekyll serve -s /site
