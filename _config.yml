@@ -10,7 +10,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github:  wadehuang36
 linkedin:  wadehuang
-link: https://www.linkedin.com/in/wadenhuang/
 
 markdown: kramdown
 
@@ -19,7 +18,7 @@ disqus:
 
 analytics-google: 'UA-101876196-1'
 
-plugins:
+gems:
   - jekyll-feed
 
 # Exclude from processing.
