@@ -6,8 +6,8 @@ description: >
   A technology enthusiast. <br/>
   Expert at .Net, Nodejs, Angular and Android
 selfie: /assets/images/wade.jpg
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: ""
+url: "https://wadehuang36.github.com"
 github:  wadehuang36
 linkedin:  wadehuang
 
