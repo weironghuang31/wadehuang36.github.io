@@ -24,6 +24,7 @@ you can define any variables in the template. SendGrid doesn't restrict the nota
 ## Send Email
 SendGrid provides WebAPI and SMTP two methods to send emails. In the below example, I use WebAPI because it is easier to use.
 <img src="/assets/images/802a5a6dd71c6c2d10c1359bbd0d1bf078f8dc78.png" width="577" height="485">
+
 the values in the `substitutions` will replace the text in the template. For example, the value of `$system` will replace the `$system` in the template. 
 
 ## Benefits

@@ -11,7 +11,7 @@ Promise is very old concept which is older then me (I checked Wikipedia that Pro
 
 At first, I start few experiments to make sure, Promise can do as Queue to handle asynchronous function one after another.
 
-### 1. The Promise can take many then(). 
+### 1. the promise can take many then(). 
 So we can make sure that one then() is for adding new Promise and one then() for the original caller.
 
 ### 2. Always trigger then() once it resolved. 
