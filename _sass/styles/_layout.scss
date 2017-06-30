@@ -280,14 +280,34 @@
 
   .tab-content {
     visibility: hidden;
-    height: 0;
-    opacity: 0;
+    display: none;
   }
 
   .tab-content.active {
     visibility: visible;
-    height: inherit;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
+    display: inherit;
+    // transition: opacity 0.5s ease-out;
+    animation: fade-in-down 1s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.post-content table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  
+  thead {
+    border-bottom: 2px solid grey;
+    th {
+      text-align: left;
+      padding-bottom: 2px;
+    }
+  }
+
+  td,th {
+    padding: 3px 3px 3px 10px;
+  }
+  tr {
+    border-bottom: 1px solid grey;
   }
 }
