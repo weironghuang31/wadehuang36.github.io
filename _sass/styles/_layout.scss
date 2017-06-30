@@ -29,7 +29,7 @@
   line-height: $base-line-height * $base-font-size * 2.25;
 
   .nav-trigger {
-      display: none;
+    display: none;
   }
 
   .menu-icon {
@@ -100,8 +100,6 @@
   }
 }
 
-
-
 /**
  * Site footer
  */
@@ -140,29 +138,29 @@
 
 .footer-col-1 {
   width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-  width:         calc(35% - (#{$spacing-unit} / 2));
+  width: calc(35% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
   width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width:         calc(20% - (#{$spacing-unit} / 2));
+  width: calc(20% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
   width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width:         calc(45% - (#{$spacing-unit} / 2));
+  width: calc(45% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-laptop) {
   .footer-col-1,
   .footer-col-2 {
     width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-    width:         calc(50% - (#{$spacing-unit} / 2));
+    width: calc(50% - (#{$spacing-unit} / 2));
   }
 
   .footer-col-3 {
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
+    width: calc(100% - (#{$spacing-unit} / 2));
   }
 }
 
@@ -170,11 +168,9 @@
   .footer-col {
     float: none;
     width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width:         calc(100% - (#{$spacing-unit} / 2));
+    width: calc(100% - (#{$spacing-unit} / 2));
   }
 }
-
-
 
 /**
  * Page content
@@ -205,8 +201,6 @@
   display: block;
   @include relative-font-size(1.5);
 }
-
-
 
 /**
  * Posts
@@ -250,5 +244,50 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
+  }
+}
+
+.tabs {
+  padding: 0;
+  margin: 0;
+
+  .tab {
+    display: inline-block;
+    list-style: none;
+    margin-right: 20px;
+
+    a {
+      font-size: 1.2rem;
+      color: #999ea5;
+    }
+  }
+
+  .tab.active {
+    border-bottom: 2px solid #ff695b;
+
+    a {
+      color: #000;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.tab-contents {
+  margin-top: 1.5rem;
+
+  .tab-content {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+  }
+
+  .tab-content.active {
+    visibility: visible;
+    height: inherit;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
   }
 }

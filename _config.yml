@@ -2,13 +2,14 @@
 name: Wade Huang
 title: Wade Huang's Blogs
 email: wadehuang36@gmail.com
-description: > 
+description: >
   A technology enthusiast. <br/>
   Expert at .Net, Nodejs, Angular and Android
 selfie: /assets/images/wade.jpg
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  wadehuang36
+github:  wadehuang36
+linkedin:  wadehuang36
 link: https://www.linkedin.com/in/wadenhuang/
 
 markdown: kramdown

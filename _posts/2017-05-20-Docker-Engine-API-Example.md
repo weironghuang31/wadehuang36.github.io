@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Docker Engine API Example"
+description: An example of using Docker Engine API
 ---
 
 This is an example of using Docker Engine API. 
