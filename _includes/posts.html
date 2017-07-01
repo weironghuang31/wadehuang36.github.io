@@ -1,7 +1,7 @@
 <ul class="post-list">
   {% for post in paginator.posts %}
   <li itemscope itemtype='http://schema.org/BlogPosting'>
-    
+    <span class="post-meta" datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</span>
 
     <span class="post-heading" itemprop="name headline">
       <a class="post-link" itemprop="url" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
