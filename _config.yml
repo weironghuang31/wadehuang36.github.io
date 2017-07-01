@@ -1,6 +1,6 @@
 
 name: Wade Huang
-title: Wade Huang's Blogs
+title: Wade Huang's Blog
 email: wadehuang36@gmail.com
 description: >
   A technology enthusiast. <br/>
@@ -13,6 +13,10 @@ linkedin:  wadehuang
 
 markdown: kramdown
 
+paginate: 10
+
+paginate_path: "/page:num/"
+
 disqus:
   shortname: wadeblog
 
@@ -21,6 +25,7 @@ google-cse: '000081450704203220197:elblxastjvi'
 
 gems:
   - jekyll-feed
+  - jekyll-paginate
 
 exclude:
   - Gemfile
