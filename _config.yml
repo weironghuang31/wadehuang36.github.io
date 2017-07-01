@@ -16,19 +16,18 @@ markdown: kramdown
 disqus:
   shortname: wadeblog
 
-analytics-google: 'UA-101876196-1'
+google-analytics: 'UA-101876196-1'
+google-cse: '000081450704203220197:elblxastjvi'
 
 gems:
   - jekyll-feed
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - dist

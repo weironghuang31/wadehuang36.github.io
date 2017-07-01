@@ -311,3 +311,24 @@
     border-bottom: 1px solid grey;
   }
 }
+
+.home{
+  .gcse{
+    margin-top: -16px;
+    
+    @include media-query($on-palm) {
+      margin-top: -32px;
+    }
+  }  
+}
+
+.gcse{
+  line-height: normal;
+  max-width: 300px;
+  float: right;
+  
+  @include media-query($on-palm) {
+    max-width: inherit;
+    float: inherit;
+  }
+}
