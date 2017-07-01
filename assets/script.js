@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+function tabsHandler() {
   var tabs = document.querySelectorAll(".tab a");
   var tabContents = document.querySelectorAll(".tab-content");
 
@@ -30,5 +30,28 @@ document.addEventListener("DOMContentLoaded", function () {
     var tab = tabs[i];
 
     tab.addEventListener("click", tabHandler);
+  }
+}
+
+function tagsHandler(){
+  var tag = location.hash.substr(1);
+  var items = document.querySelectorAll("[data-tags*=\\|" + tag + "\\|]");
+
+  document.getElementById("tag").innerText = tag;
+
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.display = "block"
+  }
+  
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.getElementsByClassName("tabs")) {
+    tabsHandler();
+  }
+
+  if (location.pathname.endsWith("tags") && location.hash) {
+    tagsHandler();
   }
 });
