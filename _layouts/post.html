@@ -9,6 +9,12 @@ layout: default
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {{ page.date | date: "%b %-d, %Y" }}
       </time>
+      <div class="post-tags">
+        {% for tag in page.tags %}
+            <a class="post-tag" itemprop="keywords" href="{{ '/tags' | relative_url }}#{{ tag | slugify}}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+
       {% if page.author %}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
