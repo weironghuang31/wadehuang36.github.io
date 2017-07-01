@@ -70,7 +70,7 @@ windows> ubuntu ls /bin
 ```
 
 ## Scenario
-In our team, we create a database image which is 6GB big for development and CI, so team members and test server can just pull the image and create a container. And to return initial state is just remove the container and create a new container. This saves a lot of works to set up the database environment. But every docker image is read only, when you changes a file, docker copys it into the new layer, and it overlaps the old file. so every time we use `docker commit` to create a new layer top on the old image. The size of the image is doubled (imagine a db file is 1GB. Even run a simple SQL to edit a row will change the whole file, so the new layer has another 1GB db file top on the old 1GB db file, so the new image just plus 1GB for a minus change). Therefore, we have to shrink image before push to the docker register. we can use `docker export | docker import` to smash all layers to one, or other commands like  [docker-squash](https://github.com/jwilder/docker-squash).
+In our team, we create a database image which is 6GB big for development and CI, so team members and test server can just pull the image and create a container. And to return initial state is just remove the container and create a new container. This saves a lot of works to set up the database environment. The problem is that every docker image is read only. When you changes a file, docker copies it into the new layer and change the file in the new layer, and the file in new layer overlaps the old file. So every time we use `docker commit` to create a new image. The size of the image is doubled (imagine a db file is 1GB. Even run a simple SQL to edit a row cause the file is copied to the new layer, so the new image just plus 1GB for a minus change). Therefore, we have to shrink the image before push to the docker register. we can use `docker export | docker import` to smash all layers into one, or other commands like  [docker-squash](https://github.com/jwilder/docker-squash).
 
 The example uses `docker export | docker import` because we want to show the differences when run commands on Windows and Linux.
 
@@ -90,4 +90,4 @@ windows> ubuntu bash -c "docker export -o out.tar db-container && docker import 
 # this two commands took 1.5 minutes
 ```
 
-You can see there is a 2.5 minute difference. So this idea is tbe time saver for massive data operations of docker.
+You can see there is a 2.5 minute difference. So this idea is useful for massive data operations of docker.
