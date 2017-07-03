@@ -6,7 +6,7 @@
     <span class="post-heading" itemprop="name headline">
       <a class="post-link" itemprop="url" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
     </span>
-
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" class="hide" >{{ site.author }}</span></span>
     {% if post.description %}
     <span class="post-meta" itemprop="description">{{ post.description | escape }}</span>
     {% endif %}
