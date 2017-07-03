@@ -7,7 +7,7 @@ description: >
   Expert at .Net, Nodejs, Angular and Android
 selfie: /assets/images/wade.jpg
 baseurl: ""
-url: "https://wadehuang36.github.com"
+url: "https://wadehuang36.github.io"
 github:  wadehuang36
 linkedin:  wadehuang
 
@@ -26,7 +26,7 @@ google-cse: '000081450704203220197:elblxastjvi'
 gems:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-sitemap
+  # - jekyll-sitemap
 
 exclude:
   - Gemfile
