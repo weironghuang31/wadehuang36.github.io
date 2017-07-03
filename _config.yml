@@ -26,6 +26,7 @@ google-cse: '000081450704203220197:elblxastjvi'
 gems:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
 
 exclude:
   - Gemfile

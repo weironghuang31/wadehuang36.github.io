@@ -3,6 +3,16 @@
 
 {% include head.html %}
 
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "url": "{{site.url}}",
+      "name" : "{{site.name}}"
+      "logo": "{{site.selfie | relative_url}}"
+    }
+</script>
+
 <body>
 
 <main class="page-content" aria-label="Content">
