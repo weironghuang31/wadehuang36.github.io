@@ -100,9 +100,11 @@ Every time **test 1** button is hit, the new **then()** will be triggered immedi
 ```
 
 **Test 2 with Queue Output**
+
 <img src="/assets/images/ab6bf4b99506c7eac446434019c2510a4b469c61.gif" width="371" height="266">
 
 **Test3 with no Queue Output**
+
 <img src="/assets/images/810fce700c633d6c46fe8d3ea2568aaabfa6846c.gif" width="401" height="386">
 
 You can see the result 3 has no order and run fast because it run concurrently.
@@ -128,5 +130,5 @@ You can use this idea for something although it run asynchronously, but you want
 
 
 ## References
-- [MDN - Promise]([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [MDN - Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Wikipedia - Futures and promises](https://en.wikipedia.org/wiki/Futures_and_promises)
