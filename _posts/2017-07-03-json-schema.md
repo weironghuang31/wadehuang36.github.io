@@ -11,7 +11,7 @@ JSON (JavaScript Object Notation) is a nice format. It isn't too freedom as plai
 ## Environments 
 In this example, I used
 - [Visual Studio Code](https://code.visualstudio.com/) to compose the JSON Schema and JSON Documents.
-- [Nodejs](nodejs.org) for the API server.
+- [Nodejs]((http://nodejs.org) for the API server.
 - [ajv](https://www.npmjs.com/package/ajv) for the JSON validator.
 
 ## Compose the JSON Schema
