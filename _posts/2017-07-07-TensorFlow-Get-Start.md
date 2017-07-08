@@ -46,7 +46,7 @@ with tf.Session() as sess:
     # generate a graph with only one node
     const_node = tf.constant('Hello, TensorFlow!')
 
-    # execute session.run(grapy) to get result
+    # execute session.run(graph) to get result
     print(sess.run(const_node))
 
 # if you don't want to use "with" statement, you can call sess.close() manually.
@@ -143,33 +143,36 @@ This is its graph
 
 ![Graph](/assets/images/2017-07-07-TensorFlow-Get-Start-2.png)
 
-The second parameter of session.run is data dictionary. The example passes an array, so the session run the grapy iteratively. 
+The second parameter of session.run is data dictionary. The example passes an array, so the session run the graph iteratively. 
 
 ### tf.Variable
-use tf.Variable() to create a Variable class which is.
+use tf.Variable() to create a Variable class which is the trainable variable. When you run training with an Optimizer, variables are changed by the Optimizer. You can use session.run([variables]) to get last values in the session.
+
+#### An example of Liner Model
+Let's start a very easy example, finding the parameters of converting celsius to fahrenheit. Assume we only know some degrees between this two unit such as when the 0°c is 32 °c, but we don't the formula, so we cannot give a arbitrary degree of celsius convert to the degree of fahrenheit. Therefore, we want Machine to find the relationship for us. We know that converting celsius to fahrenheit or vice versa is a liner model, so it can apply this formula. 
 
 $$ y = mx + b $$
 
+Then, give some x's and y's as training data. Machine is able to find the m and b.
+
 ``` py
-# The goal of this example is find x1 and x0 for the formula of f = c * x1 + x0.
+# c = celsius = x
+# f = fahrenheit = y
 
-# variables
-x0 = tf.Variable(0, dtype=tf.float32)
-x1 = tf.Variable(0, dtype=tf.float32)
-
-# c = celsius
-# f = fahrenheit
 c = tf.placeholder(tf.float32)
 f = tf.placeholder(tf.float32)
 
-formula = c * x1 + x0
+b = tf.Variable(0, dtype=tf.float32, name="b")
+m = tf.Variable(0, dtype=tf.float32, name="m")
 
-# loss
-error = formula - f
+# convert celsius to fahrenheit
+linear_formula = m * c + b
 
+# error and loss
+error = linear_formula - f
 loss = tf.reduce_sum(tf.square(error))
 
-# optimizer
+# training optimizer
 optimizer = tf.train.AdagradOptimizer(1)
 train = optimizer.minimize(loss)
 
@@ -183,16 +186,13 @@ init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
     
-    max_loop = 10000
-    loop_count = 0
-    loss_value = 1
-    threshold = 1e-6
+    max_loop, loop_count, loss_value, threshold = [10000, 0, 1, 1e-6] 
     
     while loop_count < max_loop and loss_value > threshold:
-        loop_count = loop_count + 1;
+        loop_count = loop_count + 1
         loss_value = sess.run([loss, train], {c:c_train, f:f_train})[0]
 
-
+    # print training result
     print("Loop count: %s, loss: %s"%(loop_count, loss_value))
     
     # use session.run to get the last values
@@ -204,19 +204,67 @@ Loop count: 4771, loss: 9.94973e-07
 F = C * 32 + 1.8
 ```
 
+This is its graph
+
+![Graph](/assets/images/2017-07-07-TensorFlow-Get-Start-3.png)
+
+The graph inside of m
+
+![Graph](/assets/images/2017-07-07-TensorFlow-Get-Start-4.png)
+
+After 4771 iteration, Machine is able to find m is 32 and b is 1.8. Then we can use the formula to get fahrenheit by give a degree of celsius
+
+``` py
+sess.run(linear_formula, {c:[38]})
+
+###Result###
+100.4
+```
 
 # Save and Restore
+The above example is very simple, The variables m and b can be found less second. It is not different to find the values from scratch or to use the saved value, but normally a model needs a mass calculations and some time. You probably don't want to wait certain time to get result. Thus, you can save the states of the session and restore it.
+
+``` py
+# this is a modified version of the above example
+with tf.Session() as sess:
+    while loop_count < max_loop and loss_value > threshold:
+        loss_value = sess.run([loss, train], {c:c_train, f:f_train})[0]
+
+    tf.train.Saver().save(sess, "/path/to/file.ckpt")
+
+# restore
+with tf.Session() as sess:
+    tf.train.Saver().restore(sess, "/path/to/file.ckpt")
+
+    # run linear_formula with the saved status.
+    sess.run(linear_formula, {c:[38]})
+```
 
 # Visualization
+TensorFlow has official tool for visualization called TensorBoard. TensorBoard is included in TensorFlow, so when you install TensorFlow, TensorBoard is also installed. Currently TensorBoard doesn't support online editor, so you have to build the TensorFlow graph in other places such as Jupyter Notebook. Then save the data and point TensorBoard to use that data.
 
+> See [this document](https://www.tensorflow.org/get_started/graph_viz) for more information.
 
+use tf.summary.FileWriter() to save data.
+
+``` py
+with tf.Session() as sess:
+    x = tf.placeholder(tf.int32)
+    y = tf.placeholder(tf.int32)
+    formula = x + y
+    tf.summary.FileWriter(sess.graph, "/path/to/folder")
+```
+
+Launch the TensorBoard service with the folder that has saved data.
+
+``` bash
+tensorboard --logdir=/path/to/folder
+``` 
+
+> See [this example](https://github.com/wadehuang36/notebooks/) that how I use Docker to launch Jypyter Notebook and TensorBoard.
 
 # Conclusion
-TensorFlow is a interesting framework. Its
-I believe it is worth to try it now.
+I have been played TensorFlow for some days. It is a very interesting framework. Its concepts are different than some other Machine Learning Frameworks such Spark, Caffe and scikit-learn that I have learned and used. I was amused by its data flow graph. Although TensorFlow are pretty new framework, the resources and tutorials are increasing. I think it is worth to try it.
 
 # References
 [Getting Started With TensorFlow](https://www.tensorflow.org/get_started/get_started)
-
-    
-
