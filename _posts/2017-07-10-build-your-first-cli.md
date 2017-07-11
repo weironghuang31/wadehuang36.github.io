@@ -16,7 +16,7 @@ I use Nodejs to build the CLI tool. There are 3 benefits:
 - Easy to build. Only few lines, the project can be turned to a CLI tool.
 
 ## Requirement
-- Nodejs(https://nodejs.org/)
+- [Nodejs](https://nodejs.org/)
 
 Try this command to see your computer has nodejs installed.
 ``` bash
