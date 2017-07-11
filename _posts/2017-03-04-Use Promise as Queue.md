@@ -101,11 +101,11 @@ Every time **test 1** button is hit, the new **then()** will be triggered immedi
 
 **Test 2 with Queue Output**
 
-<img src="/assets/images/ab6bf4b99506c7eac446434019c2510a4b469c61.gif" width="371" height="266">
+![Test2](/assets/images/2017-03-04-1.gif)
 
 **Test3 with no Queue Output**
 
-<img src="/assets/images/810fce700c633d6c46fe8d3ea2568aaabfa6846c.gif" width="401" height="386">
+![Test3](/assets/images/2017-03-04-2.gif)
 
 You can see the result 3 has no order and run fast because it run concurrently.
 

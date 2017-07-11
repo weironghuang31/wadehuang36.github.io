@@ -41,7 +41,7 @@ More info in [Configure Build Variants](https://developer.android.com/studio/bui
 
 When building, Gradle will take the file of current type and combine main folder. So I can put one google-services.json file under **/src/debug** folder, and another one put on **/src/main** folder for non-debug build(like the picture below), or more if we needs.
 
-![the picture of the folders](/assets/images/9cbca52a78c274752d1dc9ae39f6bafe33eb6bb2.png)
+![the picture of the folders](/assets/images/2017-02-17-1.png)
 
 Therefore, when the build type is debug, than the developemntal google-services.json is picked. On the other hand, when the build type is release, than the production google-services.json is picked.
 

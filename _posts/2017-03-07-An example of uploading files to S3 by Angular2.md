@@ -92,7 +92,8 @@ Because this is the client site script, there are stricter than other platforms.
 
 Go to Bucket > Properties > Permissions.
 Click Edit CORS Configuration
-<img src="/assets/images/f4e2e82027556a77faac7e1df108395ae6bcedaa.png" width="690" height="318">
+
+![AWS](/assets/images/2017-03-07-1.png)
 
 Add`<AllowedMethod>POST</AllowedMethod>` and `<ExposeHeader>Location</ExposeHeader>` like the below sample.
 ```

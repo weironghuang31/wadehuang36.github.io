@@ -12,7 +12,7 @@ Azure Web App supports pull source from version control server like Github and T
 
 ## 1. Setup Azure Web App
 After creating an Web App, go to **Deployment options** and follow the wizard to connect a source.
-![go to deployment options](/assets/images/1ec08379f362b43d3ca2ad0e71f598dff62fb94b.png)
+![go to deployment options](/assets/images/2017-03-02-1.png)
 
 Once it settles, you can see the whole files are copied to the root of wwwroot(on the end will tell you how to see files). This result isn't what we want because Angular 2 Apps use Typescript, they need to be complied. 
 
@@ -122,13 +122,15 @@ Now you can enjoy your app and this idea can apply to others like **Ember App**.
 Wait!! Something go wrong. The app cannot run. This section tells you how to debug it.
 
 In the portal of your web app. Type *tools* in search bar or scroll to the end then go to **Advanced Tools**
-<img src="/assets/images/3f3ac11bda49d5c783f2980e82d501743a332496.png" width="237" height="472">  
+
+![Advanced Tools](/assets/images/2017-03-02-2.png)
 
 Advanced Tools has **better** web console, so don't go to the **Console** in the portal.
 
-###Advanced Tools
+### Advanced Tools
 Go to **Debug console**, you can see the file explorer on the top and the console the bottom.
-<img src="/assets/images/58736b53a9afd8caa2820ba12ba17914103b59e7.png" width="620" height="500"> 
+
+![Debug console](/assets/images/2017-03-02-3.png)
 
 ```text
 /site/deployments   contains the deployment logs

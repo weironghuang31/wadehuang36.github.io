@@ -8,7 +8,7 @@ tags:
 
 As you might know, Docker runs on Windows and Mac aren't quite naturally. On Windows or Mac, Docker client connect to Docker Daemon who dwells on a Linux VM on Hyper-V or VirtualBox. The communication is between Host Machine and Virtual Machine. This is unlike Docker on Linux which Docker client uses Unix domain socket to connect Docker Daemon. The communication is between two processes on the same machine. So when we run some Docker commands(like docker-export) which needs to transit mass data, the processing time on Linux is fast on Windows and Mac. Also, there are some commands are only linux exclusive (like [docker-squash](https://github.com/jwilder/docker-squash)). Furthermore, the Docker Linux VM cannot be operated directly like other VMs. Those things are a little troublesome when we use Docker on Windows or Mac, but fortunately, we can create a container and connect to the container. The communication are like this 
 
-![CommunicationOfContainer](/assets/images/docker-container-to-daemon.png)
+![CommunicationOfContainer](/assets/images/2017-07-01-docker-container-to-daemon.png)
 
 So we run commands on the container, the communication is still within the same VM. And we can run Linux-Only commands, too.
 

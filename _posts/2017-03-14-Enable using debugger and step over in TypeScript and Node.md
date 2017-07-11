@@ -63,11 +63,11 @@ you can see ./dist/app.js and ./dist/app.map are generated.
 ### Launch node debug with ./dist/app.js
 This picture is show how to add a debug configuration on WebStorm. And the step should be similar on other IDEs
 
-<img src="/assets/images/038cbbc3dc058b9e8bbf1810c0c9e6cc99b0a8af.png" width="690" height="445">
+![Settings](/assets/images/2017-03-14-1.png)
 
 Select ./dist/app.js to run. Add a break point in app.ts and hit Debug button. you can use debugger with TypeScript source code. Step over, step into, see variables, stacks are exactly same as you do in JavaScript. 
 
-<img src="/assets/images/eebdb38c558a4061b64be0c2832cb340a8a87431.png" width="690" height="494">
+![Settings](/assets/images/2017-03-14-2.png)
 
 ### Add Tasks to compile source before running debugger.
 
@@ -82,7 +82,8 @@ we can add npm scripts and let IDEs to run these scripts. I thinks it is better.
 ```
 
 and add task. here use WebStorm as example.
-<img src="/assets/images/5c5f256c110ed78b97bab7eb83a8ffdf2b2825a6.png" width="690" height="445">
+
+![Settings](/assets/images/2017-03-14-3.png)
 
 WebStorm also provides the build-in build TypeScript task, you can use it directly.
 

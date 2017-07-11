@@ -48,7 +48,8 @@ mklink /d shared ..\..\shared
 
 After you create the link, you can see the icon is different in file explorer and IDE.
 
-<img src="/assets/images/515fa40715765a1306dc2621197476d2d6564c21.png" width="316" height="183">
+![Folders](/assets/images/2017-04-06-1.png)
+
 
 see [mklink](https://technet.microsoft.com/en-us/library/cc753194.aspx) document
 see [ln](https://en.wikipedia.org/wiki/Ln_(Unix)) document
@@ -63,13 +64,13 @@ Because Symbolic Link is supported by OS, so if you copy the project folder to a
 
 When you commit, Git treats a Symbolic Link as a file and the content is the path into the repo. 
 
-<img src="/assets/images/cd3a07d69adb73ad51e0de179ea0e8540bf51925.png" width="618" height="365"> 
+![Github](/assets/images/2017-04-06-2.png)
 
 When you clone a repo and checkout a branch. If your project has Symbolic Links, Git also create Symbolic Link for you, so you don't need to create by yourself.
 
 In windows, you have to enable this feature when you install git for windows.
 
-<img src="/assets/images/b5901807c9e5eef153864c816d2a3c05de3255ba.png" width="510" height="389">
+![Git for Windows](/assets/images/2017-04-06-3.png)
 
 If you didn't enable the feature when installation. you can enable when you clone the repo.
 
