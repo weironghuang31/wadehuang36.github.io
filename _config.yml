@@ -2,14 +2,14 @@
 name: Wade Huang
 title: Wade Huang's Blog
 email: wadehuang36@gmail.com
-description: >
-  A technology enthusiast. <br/>
-  Expert at .Net, Nodejs, Angular and Android
+description: A technology enthusiast.<br/> Expert at .Net, Nodejs, Angular and Android.
 selfie: /assets/images/wade.jpg
+logo: /assets/images/logo.jpg
 baseurl: ""
 url: "https://wadehuang36.github.io"
 github:  wadehuang36
 linkedin:  wadehuang
+
 
 markdown: kramdown
 
