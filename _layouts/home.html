@@ -2,17 +2,6 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include head.html %}
-
-<script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
-      "url": "{{site.url}}",
-      "name" : "{{site.title}}"
-      "description" : "{{site.description | strip_html}}"
-      "image": "{{site.logo | absolate_path}}"
-    }
-</script>
 <body>
 
 <main class="page-content" aria-label="Content">
