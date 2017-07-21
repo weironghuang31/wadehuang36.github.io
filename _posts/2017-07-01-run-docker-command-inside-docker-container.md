@@ -72,22 +72,27 @@ windows> ubuntu ls /bin
 ## Scenario
 In our team, we create a database image which is 6GB big for development and CI, so team members and test server can just pull the image and create a container. And to return initial state is just remove the container and create a new container. This saves a lot of works to set up the database environment. The problem is that every docker image is read only. When you changes a file, docker copies it into the new layer and change the file in the new layer, and the file in new layer overlaps the old file. So every time we use `docker commit` to create a new image. The size of the image is doubled (imagine a db file is 1GB. Even run a simple SQL to edit a row cause the file is copied to the new layer, so the new image just plus 1GB for a minus change). Therefore, we have to shrink the image before push to the docker register. we can use `docker export | docker import` to smash all layers into one, or other commands like  [docker-squash](https://github.com/jwilder/docker-squash).
 
-The example uses `docker export | docker import` because we want to show the differences when run commands on Windows and Linux.
-
 ### Test 1: On Windows
 ``` bash
 windows> docker export -o out.tar db-container
 windows> docker import out.tar db-image
 windows> del out.tar
 
-# this two commands took 4 minutes, because transit out.tar took a lot time.
+# these commands took about 4 minutes, 
+# because transit out.tar from host and vm took a lot time.
 ```
 
 ### Test 2 On Linux
 ``` bash
 windows> ubuntu bash -c "docker export -o out.tar db-container && docker import test.tar db-image && rm out.tar"
 
-# this two commands took 1.5 minutes
+# this command took 1.5 minutes.
+# it save time because it don't transit file between host and vm.
+
+windows> ubuntu bash -c "docker export db-container | docker import - db-image"
+
+# this command took 30 seconds, 
+# it save time because piping data between two commands.
 ```
 
-You can see there is a 2.5 minute difference. So this idea is useful for massive data operations of docker.
+You can see there is up to a 3.5-minute difference. So this idea is useful for massive data operations of docker.
