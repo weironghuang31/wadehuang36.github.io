@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Offline Image Classifier on Android(undone)
+title: Offline Image Classifier on Android
 description: An example of using Tensorflow Mobile and MobileNet for image classifier offline.
 tags: 
     - tensorflow
@@ -25,13 +25,13 @@ The most complicated thing in Machine Learning is building and training the mode
 > There are other trained model provided by Tensorflow, see the [list](https://github.com/tensorflow/models/).
 
 ## Step 2. Freeze Your Model
-The files you downloaded from step 1 are checkpoint files(data, index and meta) which just the states of variables in the graph. The model can be trained continually with these files, but since Tensorflow Mobile doesn't support training, it also doesn't support loading checkpoint files. Thus, we have to make it become protobuf binary with the graph and data of the model. This step Tensorflow call `Freeze`. There is not one tool to do this job. On the Tensorflow repo, there are two Python or C++ scripts to do this.
+The files you downloaded from step 1 are checkpoint files(data, index and meta) which just the states of variables in the graph. The model can be trained continually with these files, but since Tensorflow Mobile doesn't support training, it also doesn't support loading checkpoint files. Thus, we have to make it become protobuf binary with the graph and data together. This step Tensorflow calls `Freeze`. There is not one tool to do this job. On the Tensorflow git repositories, there are two Python or C++ scripts to do this.
 
 - https://github.com/tensorflow/models/blob/master/slim/export_inference_graph.py
 - https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/freeze_graph.py
 
 ``` bash
-# it is better to clone the repo, because these scripts have some dependencies.
+# it is better to clone the repos, because these scripts have some dependencies.
 
 python export_inference_graph.py --model_name=mobilenet_v1 \
     --default_image_size=224 \
@@ -60,8 +60,8 @@ network_fn = network.mobilenet_v1
 
 image_size = 224
 num_classes = 1001
-checkpoints = "./.checkpoints/mobilenet_v1/mobilenet_v1.ckpt"
-output = "./.mobilenet_v1/mobilenet_v1.pb"
+checkpoints = "./checkpoints/mobilenet_v1.ckpt"
+output = "./mobilenet_v1.pb"
 
 # The name of the last step which is defined in mobilenet_v1.py
 output_node_names = "MobilenetV1/Predictions/Reshape_1"
@@ -104,26 +104,65 @@ with tf.Graph().as_default() as graph:
             f.write(output_graph_def.SerializeToString())
 ``` 
 
-> See the [sample](https://github.com/wadehuang36/notebooks/blob/master/machine-learning/tensorflow/Freeze%20Graph.ipynb) in Jupyter Notebook
+> See the [example](https://github.com/wadehuang36/notebooks/blob/master/machine-learning/tensorflow/Freeze%20Graph.ipynb) in Jupyter Notebook
 
 ### Labels
-You can use the [labels](https://github.com/wadehuang36/tensorflow_mobilenet_android_example/blob/master/app/src/main/assets/labels.txt) I reformat or download [it](https://raw.githubusercontent.com/tensorflow/models/master/inception/inception/data/imagenet_metadata.txt) from ImageNet.
+You can use the [labels](https://github.com/wadehuang36/tensorflow_mobilenet_android_example/blob/master/app/src/main/assets/labels.txt) I reformat or download [the origin file](https://raw.githubusercontent.com/tensorflow/models/master/inception/inception/data/imagenet_metadata.txt) from ImageNet.
 
 ### Test the protobuf binary is generated correctly
 ``` bash
 # From https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/label_image/label_image.py
 
 python label_image.py --image=image_path \
-    --graph=graph_path \
+    --graph=./mobilenet_v1.pb \
     --labels=labels.txt \ 
     --output_layer=MobilenetV1/Predictions/Reshape_1
 ```
 
-> See the [sample](https://github.com/wadehuang36/notebooks/blob/master/machine-learning/tensorflow/Label%20Image.ipynb) in Jupyter Notebook
+> See the [example](https://github.com/wadehuang36/notebooks/blob/master/machine-learning/tensorflow/Label%20Image.ipynb) in Jupyter Notebook
 
 ## Step 3. Add Tensorflow Mobile on the Project
+There are two ways to add Tensorflow Mobile into your projects.
 
-## Step 4. Run the classifier
+1. Download the C++ source code and make the library.
+2. Use the pre-build library from jCenter.
 
+The second way is most likely you add other libraries on android projects, so I will use this method in this article as well.
 
-![Results](https://github.com/wadehuang36/tensorflow_mobilenet_android_example/blob/master/screenshots/screenshot-1.png?raw=true)
+``` js
+// add this line in build.gradle
+dependencies {
+    compile 'org.tensorflow:tensorflow-android:1.2.0'
+}
+```
+
+### TensorFlowInferenceInterface
+The main class of TensorFlow Mobile is TensorFlowInferenceInterface. It only supports load protobuf model from assets folder. Therefore, the file generated from step 2 have to put under `./project/app/src/main/assets` as well as the labels.txt.
+
+> To create the folder. right click upon the project on Android Studio. Then go to `New > Folder > Asset Folder`.
+
+## Step 4. Run the classification
+``` java
+int CLASS_SIZE = 1001; // MobileNet has 1000 classes + 1 zero-index
+int IMAGE_SIZE = 224; 
+String INPUT_NAME = "input";
+String OUTPUT_NAME = "MobilenetV1/Predictions/Reshape_1";
+String[] OUTPUT_NAMES = {OUTPUT_NAME};
+
+// load the model
+TensorFlowInferenceInterface tfii = new TensorFlowInferenceInterface(context.getAssets(), "mobilenet_v1.pb");
+
+// input a image for classification
+tfii.feed(INPUT_NAME, imageFloats, 1, IMAGE_SIZE, IMAGE_SIZE, 3);
+
+// run the classification as session.run() in python.
+tfii.run(OUTPUT_NAMES, false);
+
+// get output variables which are the probabilities of the classes.
+float[] outputs = new float[CLASS_SIZE];
+tfii.fetch(OUTPUT_NAME, outputs);
+
+// than do argmax the outputs to get the top of the highest probabilities of the classes.
+```
+
+<img src="https://github.com/wadehuang36/tensorflow_mobilenet_android_example/blob/master/screenshots/screenshot-1.png?raw=true" style="max-width:300px">
