@@ -196,12 +196,12 @@ with tf.Session() as sess:
     print("Loop count: %s, loss: %s"%(loop_count, loss_value))
     
     # use session.run to get the last values
-    print("F = C * {0:.2n} + {1:.2n}".format(*sess.run([x0, x1])))
+    print("F = C * {0:.2n} + {1:.2n}".format(*sess.run([m, b])))
 
 
 ###Result###
 Loop count: 4771, loss: 9.94973e-07
-F = C * 32 + 1.8
+F = C * 1.8 + 32 
 ```
 
 This is its graph
@@ -252,7 +252,7 @@ with tf.Session() as sess:
     x = tf.placeholder(tf.int32)
     y = tf.placeholder(tf.int32)
     formula = x + y
-    tf.summary.FileWriter(sess.graph, "/path/to/folder")
+    tf.summary.FileWriter("/path/to/folder", sess.graph)
 ```
 
 Launch the TensorBoard service with the folder that has saved data.
