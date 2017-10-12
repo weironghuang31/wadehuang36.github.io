@@ -67,7 +67,7 @@ mm-dd HH:MM:SS.FFF PID/MyApp D/MyApp.TrafficData: ---END---
 
 Then we wrote an WPF app to parse the logs
 
-``` CSHARP
+``` cs
 public class TrafficDataReader
 {
     private CancellationTokenSource _tokenSource;
