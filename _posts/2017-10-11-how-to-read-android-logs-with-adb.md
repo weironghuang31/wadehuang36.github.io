@@ -12,7 +12,7 @@ Developers can read Android logs without using Android Studio or Android Monitor
 adb logcat
 ```
 
-**See this [document](https://developer.android.com/studio/command-line/logcat.html) to know all usages of logcat.**
+> See this [document](https://developer.android.com/studio/command-line/logcat.html) to know all usages of logcat.
 
 
 This give developers more ways to debug. For example:
@@ -24,7 +24,7 @@ In Android Studio, you can only see logs with one filter at one time. It might b
 adb logcat -s tag:level [tag:level, tag:level, ...]
 ```
 
-    -s option will making conceal all other logs except of the giving tags 
+> -s option will making conceal all other logs except of the giving tags 
 
 Because each consoles only show the logs filtered by the tags. It would be easier to read the aggregated logs on the different consoles than to read all logs on the one consoles.
 
@@ -50,7 +50,8 @@ if (Log.isLoggable(TAG, Log.DEBUG)) {
     Log.d(TAG, "---END---");
 }
 ```
-    Android can set which tags of logs should output. By default, all tags are disabled, so the above logs won't output until we can type `adb shell setprop log.tag.{the tag} level` to enable it. In this case we have to type `adb shell setprop log.tag.MyApp.TrafficData debug` to enable.
+
+> Android can set which tags of logs should output. By default, all tags are disabled, so the above logs won't output until we can type `adb shell setprop log.tag.{the tag} level` to enable it. In this case we have to type `adb shell setprop log.tag.MyApp.TrafficData debug` to enable.
 
 The output looks like
 
@@ -62,7 +63,7 @@ mm-dd HH:MM:SS.FFF PID/MyApp D/MyApp.TrafficData: csv format data
 mm-dd HH:MM:SS.FFF PID/MyApp D/MyApp.TrafficData: ---END---
 ```
 
-    The size of one log is about 4K, so don't put too long string in one log. It will be cut off.
+> The size of one log is about 4K, so don't put too long string in one log. It will be cut off.
 
 Then we wrote an WPF app to parse the logs
 
