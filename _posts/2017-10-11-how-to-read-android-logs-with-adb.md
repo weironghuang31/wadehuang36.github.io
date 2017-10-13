@@ -6,6 +6,8 @@ tags:
     - android
 ---
 
+# How to read Android logs with ADB
+
 Developers can read Android logs without using Android Studio or Android Monitor. We can simply just type the below command to see all the logs. 
 
 ``` bash
