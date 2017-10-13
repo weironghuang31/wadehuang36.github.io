@@ -1,9 +1,10 @@
 ---
 layout: post
 title: use %load or %run to load common python code in jupyter
-description: {description}
+description: It would be better that we create a nb_global.py or so to be share in multiple notebooks.
 tags: 
-    - {tags}
+    - python
+    - jupyter
 ---
 
 # Use %load or %run to load common python code in jupyter
