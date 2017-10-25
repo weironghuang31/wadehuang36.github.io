@@ -3,7 +3,9 @@ layout: post
 title: Play Around Java Date Formating with Localization
 description: some tips for localizing date time
 tags: 
-    - {tags}
+    - DateFormat
+    - Java
+    - Android
 ---
 
 # Play Around Java DateFormat with Localization
