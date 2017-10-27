@@ -36,7 +36,7 @@ You can give two parameters, style and locale, as the below example.
 String dateString = DateFormat.getDateInstance(DateFormat.SHORT, Locale.CHINA).format(new Date())
 ```
 
-> see https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html and https://docs.oracle.com/javase/tutorial/i18n/format/dateFormat.html for more information.
+> see this [doc] (https://docs.oracle.com/javase/8/docs/api/java/text/DateFormat.html) and this [doc](https://docs.oracle.com/javase/tutorial/i18n/format/dateFormat.html) for more information.
 
 ## Parse the Pattern
 

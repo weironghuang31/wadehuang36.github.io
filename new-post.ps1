@@ -9,7 +9,7 @@ if ($args.Count -gt 0) {
         $filename = $filename.Replace("--", "-")
     }
 
-    $filename = $filename.ToLower()
+    $filename = [uri]::EscapeDataString($filename.ToLower())
 
     $content = Get-Content "./_posts/_template.md"
 
@@ -17,9 +17,9 @@ if ($args.Count -gt 0) {
 
     Set-Content "./_posts/${date}-${filename}.md" -Value $content
 
-
     Write-Host "./_posts/${date}-${filename}.md created"
-    # Write-Host $content 
+    
+    code -r "./_posts/${date}-${filename}.md"
 }
 else {
     throw "You need to pass the name of the new post."
