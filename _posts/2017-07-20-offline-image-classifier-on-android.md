@@ -17,7 +17,7 @@ One of the advantage of Tensorflow is that it has libraries for [Mobile](https:/
 - [Tensorflow](https://www.tensorflow.org/install/)
 - Python
 
-> you can see my another post [TensorFlow Get Start in Python](https://wadehuang36.github.io/2017/07/07/TensorFlow-Get-Start.html) to know how to run TensorFlow in Docker.
+> you can see my another post [Get Started with TensorFlow in Python](https://wadehuang36.github.io/2017/07/07/TensorFlow-Get-Start.html) to know how to run TensorFlow in Docker.
 
 ## Step 1. Build and Train the Model
 The most complicated thing in Machine Learning is building and training the models. it consumes a lot of time to build the models and train them. Therefore, I used a  trained model provided by Tensorflow which is [MobileNet](https://github.com/tensorflow/models/blob/master/slim/nets/mobilenet_v1.md) for this step. Download a checkpoint tarball and untar it for next step.

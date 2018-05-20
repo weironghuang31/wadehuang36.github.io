@@ -1,7 +1,7 @@
 ---
 layout: post
-title: TensorFlow Get Start in Python
-description: A blog post for beginners who want to get start TensorFlow
+title: Getting Started with TensorFlow in Python
+description: A blog post for beginners who want to get started with TensorFlow
 tags: 
     - tensorflow
 ---
