@@ -1,13 +1,11 @@
 ---
 layout: post
 title: Get Started With Android Things
-description: help you getting started with android things
+description: Helping you get started with android things
 tags: 
     - Android Things
     - Raspberry Pi
 ---
-
-# Get Started With Android Things
 
 Nowadays, IoT (Internet of Things) has become a popular, treading topic. I have seen a lot of videos on Youtude. So it really lures my interests. So I started to learn and play around it. Also, share what I learn to everyone.
 
