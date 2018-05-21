@@ -78,3 +78,15 @@ For example, type below command in any folder that is source control by git to u
 ```
 
 ## [download](https://www.npmjs.com/package/git-tag-bump), [source code](https://github.com/wadehuang36/git-tag-bump)
+
+## Cons
+This idea has many pros, but it has cons, too.
+
+1. we can not use git tag for another purpose.
+2. `git describe` only return the first tag for the HEAD. For example,
+
+``` bash
+git tag 1.0.0-1
+git tag 1.0.0-2
+git describe --tags # it returns 1.0.0-1 instead of 1.0.0-2
+```
