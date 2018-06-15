@@ -71,7 +71,7 @@ fun getSystemPropBoolean(key: String, default: Boolean): Boolean {
 # A Example
 There is a example to use debug options. Says we have an app that only show WelcomeActivity for first time opening the app. The app stores IsVisited value on SharedProperties. If we want to force it always open WelcomeActivity to developing and debugging. we can change the code like below.
 
-``` Kotlin
+``` kotlin
 class MainActivity : Activity() {
     override fun onCreate(){
         ...
