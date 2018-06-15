@@ -1,8 +1,7 @@
 ---
 layout: post
-title: [Android] Use System Properties as Debug Options
+title: "[Android] Use System Properties as Debug Options"
 description: Using system properties as debug options might be a good approach for you, if you want to open debug options on your apps and change these options easily without changing any code.
-
 tags: 
     - Android
     - adb
@@ -105,5 +104,6 @@ adb shell setprop debug.myapp.is_visited ''
 Next time, if WelcomeActivity changes, we don't need to clear shared preferences or change the code of MainActivity to force opening WelcomeActivity.
 
 # References
-- https://stackoverflow.com/questions/9937099/how-to-get-the-build-prop-values
-- https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/java/android/os/SystemProperties.java
+- [https://stackoverflow.com/questions/9937099/how-to-get-the-build-prop-values](https://stackoverflow.com/questions/9937099/how-to-get-the-build-prop-values)
+
+- [https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/java/android/os/SystemProperties.java](https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/java/android/os/SystemProperties.java)
