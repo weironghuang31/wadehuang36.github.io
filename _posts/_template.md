@@ -5,5 +5,3 @@ description: {description}
 tags: 
     - {tags}
 ---
-
-# {title}

@@ -3,7 +3,8 @@ if ($args.Count -gt 0) {
     
     $title = $args -join " "
 
-    $filename = $title -replace "[_ ]", "-"
+    $filename = $title -replace "\[|\]", ""
+    $filename = $filename -replace "[_ ]", "-"
     
     while ($filename -match "--") {
         $filename = $filename.Replace("--", "-")
