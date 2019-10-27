@@ -6,11 +6,13 @@ tags:
 ---
 
 
-S3 is a very popular cloud storage and using Amazon its official libraries to upload files to S3 is easy. But unfortunately Amazon doesn't have a library for Web Client. This is understanding because if you use Web Client to upload to S3, your secret access key will expose to every one who know how to read HTML. Therefore, Amazon's solution for web without its library is generating a **signature** on Web Server and put it in the form. Then after users select files, they can upload directly to S3 with the signature. See more Info in [Authenticating Requests: Browser-Based Uploads Using POST (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-authentication-HTTPPOST.html). Anyway, if you awake that it is a risk of exposing your secret access key, but you still have to upload files on the client side because you don't have a server. Then, this is the article for you.
+S3 is a very popular cloud storage and using Amazon its official libraries to upload files to S3 is easy. But unfortunately Amazon doesn't have a library for Web Client. This is understanding because if you use Web Client to upload to S3, your secret access key will expose to every one who know how to read HTML. Therefore, Amazon's solution for web without its library is generating a **signature** on Web Server and put it in the form. Then after users select files, they can upload directly to S3 with the signature. See more Info in [Authenticating Requests: Browser-Based Uploads Using POST (AWS Signature Version 4)](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-authentication-HTTPPOST.html). 
 
-#[Live Demo in plnkr](http://embed.plnkr.co/MqLdcWF6W8NUwpuHWQZ0/)
+> Anyway, if you awake that it is a risk of exposing your secret access key, but you still have to upload files on the client side because you don't have a server. Then, this is the article for you.
 
-#Steps
+# [Live Demo in plnkr](http://embed.plnkr.co/MqLdcWF6W8NUwpuHWQZ0/)
+
+# Steps
 The most difficult thing to upload S3 is generating the signature. It is kind of like old-school technique OAuth-1, you have to hash strings over and over again.
 
 ## Step 1：Generating Policy String in Base64

@@ -23,7 +23,7 @@ disqus:
 google-analytics: 'UA-101876196-1'
 google-cse: '000081450704203220197:elblxastjvi'
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   # - jekyll-sitemap
